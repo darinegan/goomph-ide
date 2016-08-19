@@ -1,0 +1,32 @@
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.14'
+}
+
+buildscript {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+
+    // make sure we don't cache stale snapshot versions
+    configurations.all {
+        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    }
+
+    dependencies {
+        classpath "com.diffplug.gradle:goomph:3.0.4"
+    }
+}
+
+apply plugin: 'com.diffplug.gradle.oomph.ide'
+
+oomphIde {
+    repoEclipse '4.6.0'
+    pde {}
+    style {
+        classicTheme()
+        niceText()
+    }
+    eclipseIni {
+        vmargs('-Xmx2g')
+    }
+}
