@@ -21,12 +21,16 @@ apply plugin: 'com.diffplug.gradle.oomph.ide'
 
 oomphIde {
     repoEclipse '4.6.0'
-    pde {}
+
+    jdt {}
+
     style {
         classicTheme()
         niceText()
     }
+
     eclipseIni {
         vmargs('-Xmx2g')
     }
+
 }
